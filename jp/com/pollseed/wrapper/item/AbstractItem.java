@@ -1,15 +1,15 @@
-package jp.com.machine.test.user;
+package jp.com.machine.test.item;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.model.DataModel;
 
-abstract class AbstractUser {
+abstract class AbstractItem {
 
     protected DataModel dataModel;
-    protected UserItemDto dto;
+    protected ItemItemDto dto;
 
-    protected AbstractUser(DataModel dataModel, UserItemDto dto) {
-        if (dataModel == null || dto == null || dto.userMap == null || dto.userMap.isEmpty()) {
+    protected AbstractItem(DataModel dataModel, ItemItemDto dto) {
+        if (dataModel == null || dto == null || dto.itemMap == null || dto.itemMap.isEmpty()) {
             throw new IllegalArgumentException();
         }
         this.dataModel = dataModel;
