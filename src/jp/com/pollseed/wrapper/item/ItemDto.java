@@ -1,4 +1,4 @@
-package jp.com.machine.test.item;
+package jp.com.pollseed.wrapper.item;
 
 public class ItemDto {
     public long userId;

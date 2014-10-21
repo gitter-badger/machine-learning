@@ -1,9 +1,9 @@
-package jp.com.machine.test.item;
+package jp.com.pollseed.wrapper.item;
 
 import java.util.List;
 import java.util.Map;
 
-import jp.com.machine.test.item.ItemItemDto.ItemName;
+import jp.com.pollseed.wrapper.item.ItemItemDto.ItemName;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;

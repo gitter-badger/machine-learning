@@ -1,10 +1,9 @@
-package jp.com.machine.test.user;
+package jp.com.pollseed.wrapper.user;
 
 import java.util.List;
 import java.util.Map;
 
-import jp.com.consts.CommonConsts.Critics;
-import jp.com.machine.test.user.UserItemDto.UserName;
+import jp.com.pollseed.wrapper.user.UserItemDto.UserName;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;

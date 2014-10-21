@@ -1,20 +1,20 @@
-package jp.com.machine.test;
+package jp.com.pollseed.wrapper.test;
 
 import java.io.File;
 import java.io.IOException;
 
-import jp.com.machine.test.eval.EvalDto;
-import jp.com.machine.test.eval.EvalItemDto;
-import jp.com.machine.test.eval.Evaluator;
-import jp.com.machine.test.eval.EvalItemDto.EvalName;
-import jp.com.machine.test.item.Item;
-import jp.com.machine.test.item.ItemDto;
-import jp.com.machine.test.item.ItemItemDto;
-import jp.com.machine.test.item.ItemItemDto.ItemName;
-import jp.com.machine.test.user.User;
-import jp.com.machine.test.user.UserDto;
-import jp.com.machine.test.user.UserItemDto;
-import jp.com.machine.test.user.UserItemDto.UserName;
+import jp.com.pollseed.wrapper.eval.EvalDto;
+import jp.com.pollseed.wrapper.eval.EvalItemDto;
+import jp.com.pollseed.wrapper.eval.EvalItemDto.EvalName;
+import jp.com.pollseed.wrapper.eval.Evaluator;
+import jp.com.pollseed.wrapper.item.Item;
+import jp.com.pollseed.wrapper.item.ItemDto;
+import jp.com.pollseed.wrapper.item.ItemItemDto;
+import jp.com.pollseed.wrapper.item.ItemItemDto.ItemName;
+import jp.com.pollseed.wrapper.user.User;
+import jp.com.pollseed.wrapper.user.UserDto;
+import jp.com.pollseed.wrapper.user.UserItemDto;
+import jp.com.pollseed.wrapper.user.UserItemDto.UserName;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;

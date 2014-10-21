@@ -1,8 +1,8 @@
-package jp.com.machine.test.eval;
+package jp.com.pollseed.wrapper.eval;
 
 import java.util.Map;
 
-import jp.com.machine.test.eval.EvalItemDto.EvalName;
+import jp.com.pollseed.wrapper.eval.EvalItemDto.EvalName;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;

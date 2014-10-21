@@ -1,4 +1,4 @@
-package jp.com.machine.test.user;
+package jp.com.pollseed.wrapper.user;
 
 public class UserDto {
     public int size;

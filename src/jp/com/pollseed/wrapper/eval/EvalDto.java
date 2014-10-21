@@ -1,4 +1,4 @@
-package jp.com.machine.test.eval;
+package jp.com.pollseed.wrapper.eval;
 
 public class EvalDto {
     public double trainingPercentage;

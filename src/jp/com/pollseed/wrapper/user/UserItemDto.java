@@ -1,4 +1,4 @@
-package jp.com.machine.test.user;
+package jp.com.pollseed.wrapper.user;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package jp.com.machine.test.user;
+package jp.com.pollseed.wrapper.user;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.model.DataModel;
