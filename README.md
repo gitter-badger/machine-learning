@@ -10,3 +10,20 @@ machine-learning java wrapper project
 * Evaluator : Implementations of this interface evaluate the quality of a Recommender's recommendations.
 * User : Implementations of this interface define a notion of similarity between two users. Implementations should return values in the range -1.0 to 1.0, with 1.0 representing perfect similarity.
 * Item : Implementations of this interface define a notion of similarity between two items. Implementations should return values in the range -1.0 to 1.0, with 1.0 representing perfect similarity.
+
+# 必要なライブラリ
+
+[Mahout](https://mahout.apache.org/)
+* version：.9
+* ルート：org.apache.mahout
+* プロジェクト名：mahout-core
+
+```
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.mahout</groupId>
+            <artifactId>mahout-core</artifactId>
+            <version>0.9</version>
+        </dependency>
+    </dependencies>
+```    
