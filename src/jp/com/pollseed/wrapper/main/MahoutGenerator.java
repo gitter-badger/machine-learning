@@ -1,4 +1,4 @@
-package jp.com.pollseed.wrapper.test;
+package jp.com.pollseed.wrapper.main;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,14 +24,21 @@ import org.apache.mahout.cf.taste.model.DataModel;
 
 /**
  * Mahoutのアルゴリズムを使うためのHOW TO USEクラス<br>
- * <b>※only UTF-8
+ * <ol><li>{@link #main(String[])}のみcall可能です.</li>
+ * <li>only UTF-8</li></ol>
  */
-class HowToUse {
+class MahoutGenerator {
+
+    private MahoutGenerator() throws IOException, TasteException {
+        this.generate();
+    }
 
     public static void main(String[] args) throws IOException, TasteException {
+        new MahoutGenerator();
+    }
 
-        File file = getFile();
-        DataModel dataModel = new FileDataModel(FileUtils.getFile(file));
+    private void generate() throws IOException, TasteException {
+        DataModel dataModel = new FileDataModel(FileUtils.getFile(getFile()));
 
         EvalItemDto evalDto = new EvalItemDto();
         evalDto.evalMap.put(EvalName.MAE, new EvalDto(0.78, 1.0));
@@ -56,16 +63,14 @@ class HowToUse {
         item.affinity();
     }
 
-    /**
-     * For Test.
-     * Is not considered an exception!
-     * @return
-     */
-    private static File getFile() {
+    private File getFile() {
+        System.out.println("> Enter input file path.");
         Scanner sc = null;
         try {
             sc = new Scanner(System.in);
-            return FileUtils.getFile(new Scanner(System.in).next());
+            File file = FileUtils.getFile(new Scanner(System.in).next());
+            System.out.println("< Auto output result.");
+            return file;
         } finally {
             sc.close();
         }
