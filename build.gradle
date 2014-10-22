@@ -1,0 +1,13 @@
+apply plugin: "java"
+apply plugin: "eclipse"
+
+def defaultEncoding = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = defaultEncoding
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.apache.mahout:mahout-core:0.9'
+}

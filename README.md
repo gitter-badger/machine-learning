@@ -28,3 +28,20 @@ machine-learning java wrapper project
         </dependency>
     </dependencies>
 ```    
+
+## gradle使う場合
+
+```
+dependencies {
+    testCompile 'org.apache.mahout:mahout-core:0.9'
+}
+```
+
+* gradle eclipseプラグインインストール
+* build.gradleを生成する
+* 以下コンソールにコマンド
+
+```
+$ gradle build
+$ gradle eclipse
+```
