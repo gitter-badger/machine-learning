@@ -3,9 +3,9 @@ package jp.com.pollseed.wrapper.user;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserItemDto {
+public class UserItemVO {
 
-    public Map<UserName, UserDto> userMap = new HashMap<UserItemDto.UserName, UserDto>();
+    public Map<UserName, UserAffinityVO> userMap = new HashMap<UserItemVO.UserName, UserAffinityVO>();
 
     public static enum UserName {
         PEARSON(1, "ピアソンの相関係数"),

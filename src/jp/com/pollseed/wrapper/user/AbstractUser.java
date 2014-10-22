@@ -6,9 +6,9 @@ import org.apache.mahout.cf.taste.model.DataModel;
 abstract class AbstractUser {
 
     protected DataModel dataModel;
-    protected UserItemDto dto;
+    protected UserItemVO dto;
 
-    protected AbstractUser(DataModel dataModel, UserItemDto dto) {
+    protected AbstractUser(DataModel dataModel, UserItemVO dto) {
         if (dataModel == null || dto == null || dto.userMap == null || dto.userMap.isEmpty()) {
             throw new IllegalArgumentException();
         }

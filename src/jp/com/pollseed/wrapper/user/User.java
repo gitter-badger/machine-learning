@@ -3,7 +3,7 @@ package jp.com.pollseed.wrapper.user;
 import java.util.List;
 import java.util.Map;
 
-import jp.com.pollseed.wrapper.user.UserItemDto.UserName;
+import jp.com.pollseed.wrapper.user.UserItemVO.UserName;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
@@ -20,7 +20,7 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 public class User extends AbstractUser {
 
-    public User(DataModel dataModel, UserItemDto dto) {
+    public User(DataModel dataModel, UserItemVO dto) {
         super(dataModel, dto);
     }
 
@@ -39,21 +39,21 @@ public class User extends AbstractUser {
 
         try {
 
-            final Map<UserName, UserDto> userMap = super.dto.userMap;
+            final Map<UserName, UserAffinityVO> userMap = super.dto.userMap;
 
             // ピアソン相関
             UserSimilarity a_pearson = new PearsonCorrelationSimilarity(super.dataModel);
-            UserDto pearson = userMap.get(UserName.PEARSON);
+            UserAffinityVO pearson = userMap.get(UserName.PEARSON);
             recommend(super.dataModel, a_pearson, pearson);
 
             // ユークリッド距離
             UserSimilarity a_euclid = new EuclideanDistanceSimilarity(super.dataModel);
-            UserDto euclidean = userMap.get(UserName.EUCLIDEAN);
+            UserAffinityVO euclidean = userMap.get(UserName.EUCLIDEAN);
             recommend(super.dataModel, a_euclid, euclidean);
 
             // コサイン類似度
             UserSimilarity a_cosine = new UncenteredCosineSimilarity(super.dataModel);
-            UserDto cosine = userMap.get(UserName.COSINE);
+            UserAffinityVO cosine = userMap.get(UserName.COSINE);
             recommend(super.dataModel, a_cosine, cosine);
 
         } catch (IllegalArgumentException e) {
@@ -72,7 +72,7 @@ public class User extends AbstractUser {
      * @param howMany
      * @throws TasteException
      */
-    private static void recommend(DataModel datamodel, UserSimilarity similarity, UserDto dto) throws TasteException {
+    private static void recommend(DataModel datamodel, UserSimilarity similarity, UserAffinityVO dto) throws TasteException {
         System.out.println(similarity.getClass());
         similarity.setPreferenceInferrer(new AveragingPreferenceInferrer(datamodel));
         UserNeighborhood neighbor = new NearestNUserNeighborhood(dto.size, similarity, datamodel);
@@ -92,7 +92,7 @@ public class User extends AbstractUser {
      * @throws TasteException
      * @deprecated
      */
-    private static void criticsRecommend(DataModel datamodel, UserSimilarity similarity, UserDto dto) throws TasteException {
+    private static void criticsRecommend(DataModel datamodel, UserSimilarity similarity, UserAffinityVO dto) throws TasteException {
         System.out.println(similarity.getClass());
         similarity.setPreferenceInferrer(new AveragingPreferenceInferrer(datamodel));
         UserNeighborhood neighbor = new NearestNUserNeighborhood(dto.size, similarity, datamodel);

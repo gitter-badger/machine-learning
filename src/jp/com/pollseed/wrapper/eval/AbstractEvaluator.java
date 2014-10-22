@@ -6,9 +6,9 @@ import org.apache.mahout.cf.taste.model.DataModel;
 abstract class AbstractEvaluator {
 
     protected DataModel dataModel;
-    protected EvalItemDto dto;
+    protected EvalItemVO dto;
 
-    protected AbstractEvaluator(DataModel dataModel, EvalItemDto dto) {
+    protected AbstractEvaluator(DataModel dataModel, EvalItemVO dto) {
         if (dataModel == null || dto == null || dto.evalMap == null || dto.evalMap.isEmpty()) {
             throw new IllegalArgumentException();
         }

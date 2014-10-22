@@ -3,9 +3,9 @@ package jp.com.pollseed.wrapper.item;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemItemDto {
+public class ItemVO {
 
-    public Map<ItemName, ItemDto> itemMap = new HashMap<ItemItemDto.ItemName, ItemDto>();
+    public Map<ItemName, ItemAffinityVO> itemMap = new HashMap<ItemVO.ItemName, ItemAffinityVO>();
 
     public static enum ItemName {
         TANIMOTO(1, "谷本係数"),

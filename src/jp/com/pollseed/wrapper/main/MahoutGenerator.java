@@ -4,18 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import jp.com.pollseed.wrapper.eval.EvalDto;
-import jp.com.pollseed.wrapper.eval.EvalItemDto;
-import jp.com.pollseed.wrapper.eval.EvalItemDto.EvalName;
+import jp.com.pollseed.wrapper.eval.EvaluationVO;
+import jp.com.pollseed.wrapper.eval.EvalItemVO;
+import jp.com.pollseed.wrapper.eval.EvalItemVO.EvalName;
 import jp.com.pollseed.wrapper.eval.Evaluator;
 import jp.com.pollseed.wrapper.item.Item;
-import jp.com.pollseed.wrapper.item.ItemDto;
-import jp.com.pollseed.wrapper.item.ItemItemDto;
-import jp.com.pollseed.wrapper.item.ItemItemDto.ItemName;
+import jp.com.pollseed.wrapper.item.ItemAffinityVO;
+import jp.com.pollseed.wrapper.item.ItemVO;
+import jp.com.pollseed.wrapper.item.ItemVO.ItemName;
 import jp.com.pollseed.wrapper.user.User;
-import jp.com.pollseed.wrapper.user.UserDto;
-import jp.com.pollseed.wrapper.user.UserItemDto;
-import jp.com.pollseed.wrapper.user.UserItemDto.UserName;
+import jp.com.pollseed.wrapper.user.UserAffinityVO;
+import jp.com.pollseed.wrapper.user.UserItemVO;
+import jp.com.pollseed.wrapper.user.UserItemVO.UserName;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.mahout.cf.taste.common.TasteException;
@@ -40,26 +40,26 @@ class MahoutGenerator {
     private void generate() throws IOException, TasteException {
         final DataModel dataModel = new FileDataModel(FileUtils.getFile(this.getFile()));
 
-        EvalItemDto evalDto = new EvalItemDto();
-        evalDto.evalMap.put(EvalName.MAE, new EvalDto(0.78, 1.0));
-        evalDto.evalMap.put(EvalName.RMS, new EvalDto(0.69, 1.0));
-        Evaluator eval = new Evaluator(dataModel, evalDto);
+        EvalItemVO evalItemVO = new EvalItemVO();
+        evalItemVO.evalMap.put(EvalName.MAE, new EvaluationVO(0.78, 1.0));
+        evalItemVO.evalMap.put(EvalName.RMS, new EvaluationVO(0.69, 1.0));
+        Evaluator eval = new Evaluator(dataModel, evalItemVO);
         eval.eval();
 
-        UserItemDto userDto = new UserItemDto();
-        userDto.userMap.put(UserName.PEARSON, new UserDto(4, 1, 100));
-        userDto.userMap.put(UserName.EUCLIDEAN, new UserDto(4, 1, 100));
-        userDto.userMap.put(UserName.COSINE, new UserDto(4, 1, 100));
-        User user = new User(dataModel, userDto);
+        UserItemVO userItemVO = new UserItemVO();
+        userItemVO.userMap.put(UserName.PEARSON, new UserAffinityVO(4, 1, 100));
+        userItemVO.userMap.put(UserName.EUCLIDEAN, new UserAffinityVO(4, 1, 100));
+        userItemVO.userMap.put(UserName.COSINE, new UserAffinityVO(4, 1, 100));
+        User user = new User(dataModel, userItemVO);
         user.affinity();
 
-        ItemItemDto itemDto = new ItemItemDto();
-        itemDto.itemMap.put(ItemName.TANIMOTO, new ItemDto(10, 1));
-        itemDto.itemMap.put(ItemName.CITY_BLOCK, new ItemDto(1, 1));
-        itemDto.itemMap.put(ItemName.LOG_LIKE, new ItemDto(1, 1));
-        itemDto.itemMap.put(ItemName.EUCLIDEAN, new ItemDto(1, 1));
-        itemDto.itemMap.put(ItemName.COSINE, new ItemDto(1, 1));
-        Item item = new Item(dataModel, itemDto);
+        ItemVO itemVO = new ItemVO();
+        itemVO.itemMap.put(ItemName.TANIMOTO, new ItemAffinityVO(10, 1));
+        itemVO.itemMap.put(ItemName.CITY_BLOCK, new ItemAffinityVO(1, 1));
+        itemVO.itemMap.put(ItemName.LOG_LIKE, new ItemAffinityVO(1, 1));
+        itemVO.itemMap.put(ItemName.EUCLIDEAN, new ItemAffinityVO(1, 1));
+        itemVO.itemMap.put(ItemName.COSINE, new ItemAffinityVO(1, 1));
+        Item item = new Item(dataModel, itemVO);
         item.affinity();
     }
 

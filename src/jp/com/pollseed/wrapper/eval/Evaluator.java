@@ -2,7 +2,7 @@ package jp.com.pollseed.wrapper.eval;
 
 import java.util.Map;
 
-import jp.com.pollseed.wrapper.eval.EvalItemDto.EvalName;
+import jp.com.pollseed.wrapper.eval.EvalItemVO.EvalName;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
@@ -20,7 +20,7 @@ import org.apache.mahout.common.RandomUtils;
 
 public class Evaluator extends AbstractEvaluator {
 
-    public Evaluator(DataModel dataModel, EvalItemDto dto) {
+    public Evaluator(DataModel dataModel, EvalItemVO dto) {
         super(dataModel, dto);
     }
 
@@ -36,7 +36,7 @@ public class Evaluator extends AbstractEvaluator {
         System.out.println("◆ EVAL ======= Start ======");
         System.out.println("◆ -------------------------");
 
-        final Map<EvalName, EvalDto> evalMap = super.dto.evalMap;
+        final Map<EvalName, EvaluationVO> evalMap = super.dto.evalMap;
 
         RandomUtils.useTestSeed();
 
@@ -57,8 +57,8 @@ public class Evaluator extends AbstractEvaluator {
         };
 
         // evaluate(RecommenderBuilder, DataModelBuilder, DataModel, 学習用データの割合, 検証用データの割合)
-        EvalDto mae = evalMap.get(EvalName.MAE);
-        EvalDto rms = evalMap.get(EvalName.RMS);
+        EvaluationVO mae = evalMap.get(EvalName.MAE);
+        EvaluationVO rms = evalMap.get(EvalName.RMS);
         double maeScore = maeEval.evaluate(builder, null, super.dataModel, mae.trainingPercentage, mae.evaluationPercentage);
         double rmsScore = rmsEval.evaluate(builder, null, super.dataModel, rms.trainingPercentage, rms.evaluationPercentage);
 

@@ -3,9 +3,9 @@ package jp.com.pollseed.wrapper.eval;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EvalItemDto {
+public class EvalItemVO {
 
-    public Map<EvalName, EvalDto> evalMap = new HashMap<EvalItemDto.EvalName, EvalDto>();
+    public Map<EvalName, EvaluationVO> evalMap = new HashMap<EvalItemVO.EvalName, EvaluationVO>();
 
     public static enum EvalName {
         MAE(1, "mean average error"),
