@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class UserItemVO {
 
-    public Map<UserName, UserAffinityVO> userMap = new HashMap<UserItemVO.UserName, UserAffinityVO>();
+    public UserItemVO() {
+        this.userMap = new HashMap<UserItemVO.UserName, UserAffinityVO>(UserName.values().length);
+    }
+
+    public final Map<UserName, UserAffinityVO> userMap;
 
     public static enum UserName {
         PEARSON(1, "ピアソンの相関係数"),

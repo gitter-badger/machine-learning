@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class ItemVO {
 
-    public Map<ItemName, ItemAffinityVO> itemMap = new HashMap<ItemVO.ItemName, ItemAffinityVO>();
+    public ItemVO() {
+        this.itemMap = new HashMap<ItemVO.ItemName, ItemAffinityVO>(ItemName.values().length);
+    }
+
+    public final Map<ItemName, ItemAffinityVO> itemMap;
 
     public static enum ItemName {
         TANIMOTO(1, "谷本係数"),

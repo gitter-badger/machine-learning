@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class EvalItemVO {
 
-    public Map<EvalName, EvaluationVO> evalMap = new HashMap<EvalItemVO.EvalName, EvaluationVO>();
+    public EvalItemVO() {
+        this.evalMap = new HashMap<EvalItemVO.EvalName, EvaluationVO>(EvalName.values().length);
+    }
+
+    public final Map<EvalName, EvaluationVO> evalMap;
 
     public static enum EvalName {
         MAE(1, "mean average error"),
