@@ -99,7 +99,7 @@ public class User extends AbstractUser {
         Recommender recommender = new GenericUserBasedRecommender(datamodel, neighbor, similarity);
         List<RecommendedItem> items = recommender.recommend(dto.userId, dto.howMany);
         for (RecommendedItem item : items) {
-            System.out.println("推薦[ アイテム名：" + Critics.getName(item.getItemID()) + ", 値：" + item.getValue() + " ]");
+            //            System.out.println("推薦[ アイテム名：" + Critics.getName(item.getItemID()) + ", 値：" + item.getValue() + " ]");
         }
     }
 }

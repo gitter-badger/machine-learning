@@ -38,8 +38,10 @@ dependencies {
 ```
 
 * gradle eclipseプラグインインストール
-* build.gradleを生成する
+* [build.gradle](https://github.com/pollseed/machine-learning/blob/master/build.gradle)を生成する
 * 以下コンソールにコマンド
+* eclipseにインポートする
+* srcがおかしい場合→一度srcを改名して(src2とかに)→プロジェクト直下でソースフォルダーをsrcという名前で作成して移動してsrc2は消せば治る。→TODO 原因調査した方がいい。
 
 ```
 $ gradle build
