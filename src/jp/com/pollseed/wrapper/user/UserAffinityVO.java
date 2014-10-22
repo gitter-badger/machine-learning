@@ -1,9 +1,9 @@
 package jp.com.pollseed.wrapper.user;
 
 public class UserAffinityVO {
-    public int size;
-    public long userId;
-    public int howMany;
+    public final int size;
+    public final long userId;
+    public final int howMany;
 
     public UserAffinityVO(int size, long userId, int howMany) {
         this.size = size;

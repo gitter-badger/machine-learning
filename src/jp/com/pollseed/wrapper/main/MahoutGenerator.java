@@ -40,25 +40,25 @@ class MahoutGenerator {
     private void generate() throws IOException, TasteException {
         final DataModel dataModel = new FileDataModel(FileUtils.getFile(this.getFile()));
 
-        EvalItemVO evalItemVO = new EvalItemVO();
-        evalItemVO.evalMap.put(EvalName.MAE, new EvaluationVO(0.78, 1.0));
-        evalItemVO.evalMap.put(EvalName.RMS, new EvaluationVO(0.69, 1.0));
+        EvalItemVO evalItemVO = new EvalItemVO(2);
+        evalItemVO.evalMap.put(EvalName.MAE, new EvaluationVO(0.7, 1.0));
+        evalItemVO.evalMap.put(EvalName.RMS, new EvaluationVO(0.7, 1.0));
         Evaluator eval = new Evaluator(dataModel, evalItemVO);
         eval.eval();
 
         UserItemVO userItemVO = new UserItemVO();
-        userItemVO.userMap.put(UserName.PEARSON, new UserAffinityVO(4, 1, 100));
-        userItemVO.userMap.put(UserName.EUCLIDEAN, new UserAffinityVO(4, 1, 100));
-        userItemVO.userMap.put(UserName.COSINE, new UserAffinityVO(4, 1, 100));
+        userItemVO.userMap.put(UserName.PEARSON, new UserAffinityVO(2, 6, 1));
+        userItemVO.userMap.put(UserName.EUCLIDEAN, new UserAffinityVO(2, 6, 1));
+        userItemVO.userMap.put(UserName.COSINE, new UserAffinityVO(2, 6, 1));
         User user = new User(dataModel, userItemVO);
         user.affinity();
 
         ItemVO itemVO = new ItemVO();
-        itemVO.itemMap.put(ItemName.TANIMOTO, new ItemAffinityVO(10, 1));
-        itemVO.itemMap.put(ItemName.CITY_BLOCK, new ItemAffinityVO(1, 1));
-        itemVO.itemMap.put(ItemName.LOG_LIKE, new ItemAffinityVO(1, 1));
-        itemVO.itemMap.put(ItemName.EUCLIDEAN, new ItemAffinityVO(1, 1));
-        itemVO.itemMap.put(ItemName.COSINE, new ItemAffinityVO(1, 1));
+        itemVO.itemMap.put(ItemName.TANIMOTO, new ItemAffinityVO(1, 5));
+        itemVO.itemMap.put(ItemName.CITY_BLOCK, new ItemAffinityVO(1, 5));
+        itemVO.itemMap.put(ItemName.LOG_LIKE, new ItemAffinityVO(1, 5));
+        itemVO.itemMap.put(ItemName.EUCLIDEAN, new ItemAffinityVO(1, 5));
+        itemVO.itemMap.put(ItemName.COSINE, new ItemAffinityVO(1, 5));
         Item item = new Item(dataModel, itemVO);
         item.affinity();
     }

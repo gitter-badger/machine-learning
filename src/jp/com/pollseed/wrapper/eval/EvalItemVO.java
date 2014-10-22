@@ -5,10 +5,12 @@ import java.util.Map;
 
 public class EvalItemVO {
 
-    public EvalItemVO() {
+    public EvalItemVO(int size) {
+        this.size = size;
         this.evalMap = new HashMap<EvalItemVO.EvalName, EvaluationVO>(EvalName.values().length);
     }
 
+    public final int size;
     public final Map<EvalName, EvaluationVO> evalMap;
 
     public static enum EvalName {

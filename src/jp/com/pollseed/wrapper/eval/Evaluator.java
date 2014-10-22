@@ -36,9 +36,10 @@ public class Evaluator extends AbstractEvaluator {
         System.out.println("◆ EVAL ======= Start ======");
         System.out.println("◆ -------------------------");
 
+        final int size = super.dto.size;
         final Map<EvalName, EvaluationVO> evalMap = super.dto.evalMap;
 
-        RandomUtils.useTestSeed();
+        //        RandomUtils.useTestSeed();
 
         /* 実際の評価値と推定値の誤差 */
         // 絶対値を求める=意味平均誤差(mean average error)
@@ -51,7 +52,7 @@ public class Evaluator extends AbstractEvaluator {
             @Override
             public Recommender buildRecommender(DataModel dataModel) throws TasteException {
                 UserSimilarity similarity = new PearsonCorrelationSimilarity(dataModel);
-                UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, dataModel);
+                UserNeighborhood neighborhood = new NearestNUserNeighborhood(size, similarity, dataModel);
                 return new GenericUserBasedRecommender(dataModel, neighborhood, similarity);
             }
         };

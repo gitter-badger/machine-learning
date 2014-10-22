@@ -1,8 +1,8 @@
 package jp.com.pollseed.wrapper.eval;
 
 public class EvaluationVO {
-    public double trainingPercentage;
-    public double evaluationPercentage;
+    public final double trainingPercentage;
+    public final double evaluationPercentage;
 
     public EvaluationVO(double trainingPercentage, double evaluationPercentage) {
         this.trainingPercentage = trainingPercentage;
