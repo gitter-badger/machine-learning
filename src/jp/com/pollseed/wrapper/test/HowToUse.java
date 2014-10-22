@@ -2,6 +2,7 @@ package jp.com.pollseed.wrapper.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import jp.com.pollseed.wrapper.eval.EvalDto;
 import jp.com.pollseed.wrapper.eval.EvalItemDto;
@@ -16,23 +17,21 @@ import jp.com.pollseed.wrapper.user.UserDto;
 import jp.com.pollseed.wrapper.user.UserItemDto;
 import jp.com.pollseed.wrapper.user.UserItemDto.UserName;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 import org.apache.mahout.cf.taste.model.DataModel;
 
 /**
- * Mahoutのアルゴリズムを使うためのイントロダクションクラス<br>
+ * Mahoutのアルゴリズムを使うためのHOW TO USEクラス<br>
  * <b>※only UTF-8
  */
-class Introduction {
-
-    private static final String DIRECTORY_PATH = "\\machineTest\\jp\\com\\machine\\test\\";
-    private static final String INPUT_PATH = String.format("%ssegment.csv", DIRECTORY_PATH);
-    private static final String OUTPUT_NAME = String.format("%ssegoutput.csv", DIRECTORY_PATH);
+class HowToUse {
 
     public static void main(String[] args) throws IOException, TasteException {
 
-        DataModel dataModel = new FileDataModel(new File(OUTPUT_NAME));
+        File file = getFile();
+        DataModel dataModel = new FileDataModel(FileUtils.getFile(file));
 
         EvalItemDto evalDto = new EvalItemDto();
         evalDto.evalMap.put(EvalName.MAE, new EvalDto(0.78, 1.0));
@@ -41,19 +40,34 @@ class Introduction {
         eval.eval();
 
         UserItemDto userDto = new UserItemDto();
-        userDto.userMap.put(UserName.PEARSON, new UserDto(3, 1, 100));
-        userDto.userMap.put(UserName.EUCLIDEAN, new UserDto(3, 1, 100));
-        userDto.userMap.put(UserName.COSINE, new UserDto(3, 1, 100));
+        userDto.userMap.put(UserName.PEARSON, new UserDto(4, 1, 100));
+        userDto.userMap.put(UserName.EUCLIDEAN, new UserDto(4, 1, 100));
+        userDto.userMap.put(UserName.COSINE, new UserDto(4, 1, 100));
         User user = new User(dataModel, userDto);
         user.affinity();
 
         ItemItemDto itemDto = new ItemItemDto();
-        itemDto.itemMap.put(ItemName.TANIMOTO, new ItemDto(10, 100));
-        itemDto.itemMap.put(ItemName.CITY_BLOCK, new ItemDto(1, 100));
-        itemDto.itemMap.put(ItemName.LOG_LIKE, new ItemDto(1, 100));
-        itemDto.itemMap.put(ItemName.EUCLIDEAN, new ItemDto(1, 100));
-        itemDto.itemMap.put(ItemName.COSINE, new ItemDto(1, 100));
+        itemDto.itemMap.put(ItemName.TANIMOTO, new ItemDto(10, 1));
+        itemDto.itemMap.put(ItemName.CITY_BLOCK, new ItemDto(1, 1));
+        itemDto.itemMap.put(ItemName.LOG_LIKE, new ItemDto(1, 1));
+        itemDto.itemMap.put(ItemName.EUCLIDEAN, new ItemDto(1, 1));
+        itemDto.itemMap.put(ItemName.COSINE, new ItemDto(1, 1));
         Item item = new Item(dataModel, itemDto);
         item.affinity();
+    }
+
+    /**
+     * For Test.
+     * Is not considered an exception!
+     * @return
+     */
+    private static File getFile() {
+        Scanner sc = null;
+        try {
+            sc = new Scanner(System.in);
+            return FileUtils.getFile(new Scanner(System.in).next());
+        } finally {
+            sc.close();
+        }
     }
 }
