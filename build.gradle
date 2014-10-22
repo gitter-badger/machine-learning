@@ -16,7 +16,10 @@ repositories {
 }
 
 dependencies {
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.0.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.0.2'
     compile 'org.seasar.doma:doma:1.31.0'
     testCompile 'junit:junit:3.8.2'
+    testCompile 'org.slf4j:slf4j-simple:1.6.1'
     testCompile 'org.apache.mahout:mahout-core:0.9'
 }
