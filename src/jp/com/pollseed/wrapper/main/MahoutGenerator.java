@@ -38,7 +38,7 @@ class MahoutGenerator {
     }
 
     private void generate() throws IOException, TasteException {
-        DataModel dataModel = new FileDataModel(FileUtils.getFile(getFile()));
+        final DataModel dataModel = new FileDataModel(FileUtils.getFile(this.getFile()));
 
         EvalItemDto evalDto = new EvalItemDto();
         evalDto.evalMap.put(EvalName.MAE, new EvalDto(0.78, 1.0));
